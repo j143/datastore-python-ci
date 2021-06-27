@@ -64,3 +64,12 @@ def list_tasks(client: datastore.Client):
 
     return list(query.fetch())
 
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+
+    parser.add_argument("--project-id", help="Google Cloud Project ID")
+
+    args = parser.parse_args()
+
+    client = create_client(args.project_id)
+    args.func(client, args)
